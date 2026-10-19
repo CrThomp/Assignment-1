@@ -67,6 +67,7 @@ public class GameEngineTest {
     }
 
     @Test
+<<<<<<< HEAD
     public void testHintVeryClose() {
         engine.setTarget(50);
         engine.makeGuess(60);
@@ -134,5 +135,20 @@ public class GameEngineTest {
         }
         GuessResult result = engine.makeGuess(55);
         assertFalse(result.getHint().isEmpty());
+=======
+    public void testQuitWithNegativeNumber() {
+        engine.setTarget(50);
+        GuessResult result = engine.makeGuess(-1);
+        assertFalse(result.isCorrect());
+        assertTrue(engine.hasUserQuit());
+        assertTrue(result.getMessage().contains("Exiting"));
+    }
+
+    @Test
+    public void testQuitDoesNotIncrementAttempts() {
+        engine.setTarget(50);
+        engine.makeGuess(-1);
+        assertEquals(0, engine.getAttempts());
+>>>>>>> dev
     }
 }
